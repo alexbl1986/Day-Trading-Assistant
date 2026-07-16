@@ -1,5 +1,6 @@
 {
   "dependencies": ["."],
+  "python_version": "3.13",
   "graphs": {
     "trading_assistant": "./app/graphs/trading_assistant/dev.py:graph"
   },

@@ -1,0 +1,32 @@
+# Frontend is a separate deployment (Vercel) — the agent image doesn't need it
+frontend/
+
+# Secrets — Railway variables replace .env; never bake keys into an image
+.env
+.env.*
+
+# Python / uv local artifacts
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+uv.lock
+
+# VCS, caches, tooling
+.git/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.langgraph_api/
+.claude/
+.vercel
+
+# Not needed at runtime (data/ IS needed — reviews + book feed the agent)
+tests/
+evals/
+artifacts/
+docs/
+scripts/
+notes_to.self.md
+deploying on railway and vercel.txt
+image.png
