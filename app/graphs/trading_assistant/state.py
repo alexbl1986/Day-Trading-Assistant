@@ -1,4 +1,4 @@
-"""Graph state and the scoper's structured output (ADR-0006).
+"""Graph state and the scoper's structured output.
 
 `AgentState` is the single reasoning context that flows through the graph:
 intake/scoper -> deterministic pre-fetch -> answering agent (tool loop on the
@@ -23,8 +23,8 @@ from pydantic import BaseModel, Field
 from app.graphs.trading_assistant.policy_model import PolicyRecord, ProposedPolicyChange
 from app.trading.domain import MissingData
 
-# The 11 routes (ADR-0006 + the two ADR-0007 transcript routes: daily_briefing,
-# trade_signal_eval; capabilities added after meta-questions about the assistant
+# The 11 routes (the original eight, plus the two transcript routes daily_briefing
+# and trade_signal_eval; capabilities added after meta-questions about the assistant
 # itself hit the off_topic refusal). Multi-label: the scoper may return several.
 Intent = Literal[
     "status_check",        # "am I within policy / exposure?" -> exposure + scaleout + pnl

@@ -2,7 +2,7 @@
 
 Turns the fully-quoted 12-column CSV into typed `Position` records. Carries
 only trustworthy raw facts: `CostBasisPrice` (always 0 in this export) and
-`PercentOfNAV` (wrong denominator) are dropped — see ADR-0002.
+`PercentOfNAV` (wrong denominator) are dropped.
 """
 
 from __future__ import annotations

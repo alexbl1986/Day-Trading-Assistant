@@ -33,7 +33,7 @@ from app.trading.domain import MissingData, Position, Trade
 from app.trading.symbols import ContractKey
 
 # Per-user data-access seams. Each returns MissingData when the backing store was
-# never uploaded, so an empty book can never be mistaken for a flat one (ADR-0006
+# never uploaded, so an empty book can never be mistaken for a flat one (the
 # cold-start contract). `user_id` is passed at call time — the server compiles the
 # graph once and serves every user; data is never baked into this frozen context.
 PositionsLoader = Callable[[str], "list[Position] | MissingData"]

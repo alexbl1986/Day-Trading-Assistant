@@ -1,4 +1,4 @@
-"""The answering agent (ADR-0006 steps 3+4, revised): one LLM, one tool loop.
+"""The answering agent: one LLM, one tool loop.
 
 The model that writes the answer is the model that gathers live evidence — a
 bounded bind_tools loop running on the user-visible `messages` thread (the
@@ -42,7 +42,19 @@ MAX_TOOL_ROUNDS = 3
 # a standing summary query rather than the trigger phrase ("morning briefing").
 BRIEFING_QUERY = "market outlook, key risks, sector positioning, and hedging guidance for today"
 
-ANSWER_SYSTEM = """You are a retail options day-trader's assistant. Answer his question
+# The one Task-6.3 prompt change; ANSWER_SYSTEM is otherwise exactly its
+# pre-change form. Added because the eval showed answers dropping ticker lists
+# that were present in the retrieved chunks (perfect retrieval, answer accuracy
+# 0.5) — "keep it tight" was summarizing the names away. One string shared with
+# evals/rag_evaluation.py (imported, not copied), so the prompt rule being
+# measured and the one in production cannot drift.
+COMPLETENESS_RULE = (
+    "When the question asks who or what is affected, benefits, or should be "
+    "watched, name every ticker and entity the evidence gives for it — never "
+    "summarize a list of names away."
+)
+
+ANSWER_SYSTEM = f"""You are a retail options day-trader's assistant. Answer his question
 directly and concretely, grounded ONLY in the evidence digest below and the results of
 tools you call in this conversation.
 
@@ -55,6 +67,7 @@ Hard rules:
   a "today" gain or loss.
 - Use only the evidence the question actually needs; do not volunteer unrelated
   book numbers.
+- {COMPLETENESS_RULE}
 - Keep it tight: a short paragraph or a few bullets.
 Do not restate the missing-data upload lines; they are appended for you."""
 

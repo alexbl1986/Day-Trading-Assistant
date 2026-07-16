@@ -26,6 +26,7 @@ dependencies = [
     "pandas>=3.0.3",
     "jupyter>=1.1.1",
     "yfinance>=1.5.1",
+    "cohere>=7.0.5",
 ]
 
 [dependency-groups]

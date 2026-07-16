@@ -1,4 +1,4 @@
-"""PyMuPDF structural extraction for the Hebrew desk reviews (ADR-0004).
+"""PyMuPDF structural extraction for the Hebrew desk reviews.
 
 We keep PyMuPDF's structural map — per-span font size + weight — because the
 adaptive chunker needs it to tell headings from body. Every span's text is run

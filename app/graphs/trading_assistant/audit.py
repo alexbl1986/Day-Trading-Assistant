@@ -1,4 +1,4 @@
-"""Deterministic audit node (ADR-0006, step 5) — code, never the LLM.
+"""Deterministic audit node — code, never the LLM.
 
 The one rule enforced here: every dollar amount and percentage in the answer must
 trace to a number in the draft's grounding (the deterministic fact digest plus
@@ -13,7 +13,7 @@ the figures that carry compliance weight. One bounce back to the answer node
 
 Rule-citation and quote-availability checks were dropped as redundant, not deferred:
 the full rulebook rides in the digest and an unavailable quote contributes no figure
-to the thread, so the numeric rule above covers both (ADR-0006, 2026-07-16 amendment).
+to the thread, so the numeric rule above covers both.
 """
 
 from __future__ import annotations

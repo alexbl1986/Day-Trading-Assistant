@@ -36,7 +36,7 @@ from app.graphs.trading_assistant.tools import (
 )
 from app.rag.chunk import chunk_document
 from app.rag.index import OPENAI_3_LARGE_DIM, CorpusIndex, openai_embedder
-from app.rag.retrieve import HybridRetriever, SharedCorpusRetriever
+from app.rag.retrieve import HybridRetriever, SharedCorpusRetriever, apply_retrieval_mode
 from app.trading.domain import MissingData
 from app.trading.ingest.statement import (
     parse_account_nav,
@@ -82,8 +82,12 @@ def _read(path: Path) -> str | None:
     return path.read_text(encoding="utf-8-sig", errors="replace") if path.exists() else None
 
 
-def _build_retriever(user_id: str) -> HybridRetriever | None:
-    """Index the committed reviews with real embeddings; None if unavailable."""
+def _build_retriever(user_id: str):
+    """Index the committed reviews with real embeddings; None if unavailable.
+
+    ``DESK_RETRIEVAL`` toggles the retrieval mode: "baseline" (hybrid, the
+    default) or "rerank" (hybrid + Cohere rerank over the fused pool, Task
+    6.1) — flip the env var to switch or revert, no code change."""
     pdfs = sorted(_REVIEWS.glob("*.pdf"))
     if not pdfs:
         return None
@@ -95,10 +99,13 @@ def _build_retriever(user_id: str) -> HybridRetriever | None:
         )
         for pdf in pdfs:
             index.replace_document(chunk_document(str(pdf)), user_id=user_id)
+        mode = os.environ.get("DESK_RETRIEVAL", "baseline")
         # Cert-prototype mode: the committed reviews are baked in for every
-        # username (coat-check identity, ADR-0005 amendment) — retrieval always
+        # username (coat-check identity) — retrieval always
         # reads this one corpus regardless of the injected caller user_id.
-        return SharedCorpusRetriever(HybridRetriever(index), owner=user_id)
+        return SharedCorpusRetriever(
+            apply_retrieval_mode(HybridRetriever(index), mode), owner=user_id
+        )
     except Exception as exc:  # noqa: BLE001 - dev convenience: start even offline
         print(f"[dev] retriever unavailable ({exc!r}); desk questions will cold-start")
         return None

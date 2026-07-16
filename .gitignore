@@ -13,6 +13,7 @@ artifacts/*
 
 # Private: discusses the real trader's workflow — never commit
 docs/PROTOTYPE_GAPS.md
+docs/PROTOTYPE_GAPS2.md
 notes_to.self.md
 
 # Deploying on railway and vercel instructions
@@ -28,5 +29,5 @@ tests/
 docs/adr/
 
 # data/book/ (formerly gitignored data/private/): anonymized book CSVs,
-# committed since 2026-07-15 (identity rows removed, owner approved —
-# ADR-0005 amendment). Identified exports must never land in the repo.
+# committed since 2026-07-15 (identity rows removed, owner approved).
+# Identified exports must never land in the repo.

@@ -1,4 +1,4 @@
-"""Intake / scoper node (ADR-0006, step 1).
+"""Intake / scoper node.
 
 The graph's routing brain: one structured-output call turns the user's message
 (plus thread history) into a `Scope` — a multi-label intent, extracted tickers,
@@ -76,7 +76,7 @@ DEFAULT_CLARIFY_QUESTION = (
 
 
 def _normalize_scope(scope: Scope, *, already_clarified: bool = False) -> Scope:
-    """Deterministic safety net around the LLM's routing (ADR-0006).
+    """Deterministic safety net around the LLM's routing.
 
     Two guards the prompt alone cannot guarantee:
       * a hypothetical about a rule ("if I raised my cap to 12%…") is analysis,

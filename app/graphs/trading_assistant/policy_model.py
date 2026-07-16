@@ -1,10 +1,10 @@
-"""The trader's exposure rulebook as a typed, versioned record (ADR-0003).
+"""The trader's exposure rulebook as a typed, versioned record.
 
 Pure data + pure functions only — no graph imports — so `state`, `deps`, and the
 policy nodes can all depend on it without a cycle. The record is seeded from
 `DEFAULT_POLICY` at first login and only ever changed through the interrupt-gated
 `update_policy` flow (see `policy.py`). Every field here is a rule a route reads;
-nothing enters the record that no code consumes (ADR-0007).
+nothing enters the record that no code consumes.
 """
 
 from __future__ import annotations
@@ -26,8 +26,7 @@ class PolicyRecord:
     hedge_ratio_high: float = 0.15
     scale_out_first: float = 1.00         # +100% -> sell one contract (rung 1)
     scale_out_second: float = 2.00        # +200% -> sell another (rung 2)
-    # Deliberately NOT here (backlogged, see task6 refinements R3 + ADR-0007
-    # amendments): the moonshot endgame (+150% arms a +50% hard stop —
+    # Deliberately NOT here (backlogged): the moonshot endgame (+150% arms a +50% hard stop —
     # path-dependent, unenforceable from snapshots), the IV shield (returns
     # with full trade_signal_eval as a fail-loud manual reminder), and the
     # max-offensive-exposure cap ("offensive" was never defined). An

@@ -1,7 +1,7 @@
 """Deterministic RTL-repair pass for pymupdf-extracted Hebrew desk reviews.
 
 pymupdf preserves the structural map we need for section-aware chunking but
-introduces two systematic RTL artifacts (ADR-0004, verified on the real
+introduces two systematic RTL artifacts (verified on the real
 08/07/26 daily): sentence-final punctuation is flipped to the START of a span,
 and a maqaf that joins a one-letter Hebrew prefix to a Latin token lands before
 the prefix. Both are mechanical, so we repair each span deterministically

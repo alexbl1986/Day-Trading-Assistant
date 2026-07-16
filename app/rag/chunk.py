@@ -1,4 +1,4 @@
-"""Adaptive, structure-aware chunking for the desk reviews (build_plan / ADR-0004).
+"""Adaptive, structure-aware chunking for the desk reviews.
 
 The reviews carry no fixed template, so we chunk on the layout signal instead:
 the per-doc char-weighted modal font size is the body, anything ~2pt larger is a

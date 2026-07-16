@@ -1,6 +1,6 @@
 import { Client, type Thread } from "@langchain/langgraph-sdk";
 
-// Coat-check identity (ADR-0005 amendment): the username is a key, not a
+// Coat-check identity: the username is a key, not a
 // credential. It owns threads (via thread metadata) and the per-user policy
 // record; the portfolio/report data is baked in and shared by design.
 

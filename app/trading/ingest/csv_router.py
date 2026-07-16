@@ -1,4 +1,4 @@
-"""Sniffing router for uploaded IBKR CSVs (ADR-0002).
+"""Sniffing router for uploaded IBKR CSVs.
 
 Classifies an upload from its first line: tactical book export (flat Flex
 table) vs YTD Activity Statement (27-section) vs unrecognized.

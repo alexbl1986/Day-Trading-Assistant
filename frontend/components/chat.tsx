@@ -75,7 +75,7 @@ export function Chat({
     const content = text.trim();
     if (!content || isLoading || interrupt != null) return;
     // user_id is the coat-check identity: it keys the policy record and the
-    // per-user seams in the graph (client-declared by design, ADR-0005 amendment).
+    // per-user seams in the graph (client-declared by design).
     stream.submit({ messages: [{ type: "human", content }], user_id: userId });
     setInput("");
   };

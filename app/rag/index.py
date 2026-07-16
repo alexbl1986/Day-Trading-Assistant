@@ -1,4 +1,4 @@
-"""Qdrant indexing for the per-user desk-review corpus (ADR-0004 / ADR-0005).
+"""Qdrant indexing for the per-user desk-review corpus.
 
 The corpus holds only the latest daily + latest weekly review per user, so an
 upload *replaces* the prior document of that type (replace-on-upload), and a

@@ -1,4 +1,4 @@
-"""Interrupt-gated policy writes (ADR-0003, ADR-0006 step 6).
+"""Interrupt-gated policy writes.
 
 A `policy_change` intent never writes on the model's say-so. Two nodes:
   * `policy_prepare` extracts the requested change (LLM) and validates it against

@@ -1,4 +1,4 @@
-"""Deterministic pre-fetch (ADR-0006 step 2, revised: CSV computations ONLY).
+"""Deterministic pre-fetch (CSV computations ONLY).
 
 The book tools (exposure, scale-out, P/L, positions; campaigns when a ticker is
 named) run on EVERY turn that reaches this node — they are milliseconds over the

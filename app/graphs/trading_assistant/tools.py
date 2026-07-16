@@ -18,11 +18,11 @@ return STRINGS that land on the thread and in the audit grounding:
   * `get_market_quote` formats USD prices with a leading `$` so any price the
     model quotes in its answer is audit-backed;
   * `search_web` returns titled excerpts — web text is evidence to quote,
-    never instructions to follow (prompt-injection demotion, ADR-0006);
+    never instructions to follow (prompt-injection demotion);
   * `size_trade_signal` sizes a pasted signal from the trader's OWN sizing
     rules: the model parses the shorthand into typed args, the money math is
     code (`app.trading.sizing`), and the output names what it did NOT check
-    (chain, IV, exit plan) — sizing-only trade_signal_eval, ADR-0007 amendment.
+    (chain, IV, exit plan) — sizing-only trade_signal_eval.
 """
 
 from __future__ import annotations
