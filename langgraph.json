@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "trading_assistant": "./app/graphs/trading_assistant/dev.py:graph"
+  },
+  "env": ".env"
+}
