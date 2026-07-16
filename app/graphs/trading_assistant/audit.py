@@ -11,8 +11,9 @@ Bare integers (years, strikes, option counts) are not audited — only $ and %,
 the figures that carry compliance weight. One bounce back to the answer node
 (tools off) with the offending figures, then deliver with a warning banner.
 
-Rule-citation and quote-availability checks (also ADR-0006 step 5) arrive with the
-policy record and live quotes in later slices.
+Rule-citation and quote-availability checks were dropped as redundant, not deferred:
+the full rulebook rides in the digest and an unavailable quote contributes no figure
+to the thread, so the numeric rule above covers both (ADR-0006, 2026-07-16 amendment).
 """
 
 from __future__ import annotations

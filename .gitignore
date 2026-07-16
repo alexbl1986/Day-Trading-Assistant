@@ -15,8 +15,17 @@ artifacts/*
 docs/PROTOTYPE_GAPS.md
 notes_to.self.md
 
+# Deploying on railway and vercel instructions
+deploying on railway and vercel.txt
+
 # Local Claude Code permissions — machine-specific
 .claude/settings.local.json
+
+
+# all tests gitignored
+tests/
+
+docs/adr/
 
 # data/book/ (formerly gitignored data/private/): anonymized book CSVs,
 # committed since 2026-07-15 (identity rows removed, owner approved —
