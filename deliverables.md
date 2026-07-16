@@ -5,6 +5,7 @@ Answers to the Certification Challenge tasks, in order:
 - [Task 1: Defining Problem, Audience, and Scope](#task-1-defining-problem-audience-and-scope)
 - [Task 2: Proposed Solution](#task-2-proposed-solution)
 - [Task 3: Dealing with the Data](#task-3-dealing-with-the-data)
+- [Task 4: End-to-End Prototype](#task-4-end-to-end-prototype)
 - [Task 5: Test Dataset, Evaluation Harness, and Baseline Conclusions](#task-5-test-dataset-evaluation-harness-and-baseline-conclusions)
 - [Task 6: Advanced Retrieval](#task-6-advanced-retrieval)
 - [Task 7: Next Steps](#task-7-next-steps)
@@ -14,7 +15,7 @@ Answers to the Certification Challenge tasks, in order:
 
 ## Traceability: deliverables to code
 
-Each task deliverable mapped to its exact location in the repository, by file path and symbol name. Task 4 has no document section; its deliverable is the deployed prototype itself.
+Each task deliverable mapped to its exact location in the repository, by file path and symbol name. Task 4's deliverable is the deployed prototype itself, so its location is the live app.
 
 
 | Task | Deliverable                                                                                       | Code location                                                                                                                     |
@@ -306,6 +307,16 @@ On the committed corpus this yields **17 chunks (avg 615 chars) for the daily re
 *(Supporting model APIs: OpenAI* `text-embedding-3-large` *embeds the corpus and queries, chosen specifically for cross-lingual strength; the gateway-served* `gpt-5.4-mini` *is the reasoning LLM.)*
 
 **How they interact during usage.** The default retrieval mode over the corpus is **hybrid**: dense (`text-embedding-3-large`, cosine, Qdrant) and BM25 (Unicode tokenizer, rebuilt per query over the user's chunks) fused with reciprocal rank fusion, top-5, exposed to the agent as the `search_desk_reviews` tool. A typical high-value flow composes all sources in one turn. The trader pastes a Discord signal ("AAOI 150 NEXT WEEK 3.1"), and the graph parses the signal (code), sizes it against NAV and the policy record (deterministic math over the *parsed book*), pulls the live quote (yfinance), and cross-references the desk's bias on the name (RAG over the reviews), with the desk tool's footer deterministically listing which *held* book names appear in the retrieved text, tying the two data worlds together in every retrieval. The morning-briefing route runs the same composition proactively: book scans (code) + latest desk read (RAG) + optional narrative (Tavily), which mirrors how the real trader's transcripts show him actually working.
+
+---
+
+
+
+# Task 4: End-to-End Prototype
+
+---
+
+The deliverable is the deployed prototype itself, the end-to-end build of the Task 2 solution serving the Task 3 data: [https://day-trading-assistant.vercel.app/](https://day-trading-assistant.vercel.app/)
 
 ---
 
